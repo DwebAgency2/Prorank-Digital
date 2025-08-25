@@ -6,15 +6,11 @@ import { HeroSection } from "./components/HeroSection";
 import { AboutSection } from "./components/AboutSection";
 import { ServicesSection } from "./components/ServicesSection";
 import { CaseStudiesSection } from "./components/CaseStudiesSection";
-import { TestimonialsSection } from "./components/TestimonialSection";
+import { TestimonialsSection } from "./components/TestimonialsSection";
 import { BlogSection } from "./components/BlogSection";
 import { ContactSection } from "./components/ContactSection";
 import { Footer } from "./components/Footer";
 import { Toaster } from "./components/ui/sonner";
-
-
-
-const BACKEND_URL = import.meta.env.VITE_REACT_APP_BACKEND_URL || 'http://localhost:8001';
 
 const Home = () => {
   return (

@@ -151,8 +151,8 @@ export const mockData = {
       id: 3,
       title: "Local SEO Strategies for Small Businesses",
       excerpt: "Master local SEO with proven strategies that help small businesses dominate their local market and attract more customers.",
-      author: "ElevateRank Team",
-      date: "2024-01-05",
+      author: "ProRank Team",
+      date: "2025-08-25",
       readTime: "12 min read", 
       category: "Local SEO",
       image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=250&fit=crop"
@@ -161,7 +161,7 @@ export const mockData = {
 
   // Company Info
   companyInfo: {
-    name: "ElevateRank Digital",
+    name: "Prorank Digital",
     tagline: "Transform Your Online Presence",
     description: "We specialize in SEO ranking and website restructuring services for USA-based businesses, helping them rank higher, convert better, and grow faster.",
     founded: "2020",
@@ -171,7 +171,7 @@ export const mockData = {
 
   // Contact Info
   contactInfo: {
-    email: "hello@elevaterankdigital.com",
+    email: "hello@prorankrankdigital.com",
     phone: "+1 (555) 123-4567",
     address: "123 Digital Avenue, Austin, TX 78701",
     hours: "Monday - Friday: 9:00 AM - 6:00 PM CST"
