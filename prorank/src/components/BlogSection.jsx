@@ -106,13 +106,13 @@ export const BlogSection = () => {
             <p className="text-slate-600 mb-6 max-w-2xl mx-auto">
               Get the latest SEO insights, industry news, and actionable tips delivered straight to your inbox every week.
             </p>
-            <div className="max-w-md mx-auto flex space-x-4">
+            <div className="max-w-md mx-auto flex flex-wrap gap-3">
               <input 
                 type="email" 
                 placeholder="Enter your email address"
-                className="flex-1 px-4 py-3 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+                className="flex-1  min-w-[160px] px-3 py-2 sm:px-4 sm:py-3 text-sm sm:text-base rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
               />
-              <button className="bg-teal-600 hover:bg-teal-700 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:shadow-lg">
+              <button className="bg-teal-600 hover:bg-teal-700 text-white px-4 py-2 sm:px-6 sm:py-3 rounded-lg font-semibold transition-all duration-300 hover:shadow-lg text-sm sm:text-base">
                 Subscribe
               </button>
             </div>
