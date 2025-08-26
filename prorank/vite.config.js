@@ -24,7 +24,7 @@ export default defineConfig({
     ],
   },
   build: {
-    outDir: 'build',
+    outDir: 'dist',
     sourcemap: true,
   },
   define: {
@@ -32,3 +32,6 @@ export default defineConfig({
     'process.env': {},
   },
 })
+
+
+
