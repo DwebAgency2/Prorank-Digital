@@ -4,7 +4,7 @@ export const mockData = {
   // Hero Section
   heroContent: {
     headline: "We Don't Just Drive Traffic — We Transform Businesses",
-    subheadline: "ElevateRank Digital specializes in SEO ranking and website restructuring that helps USA businesses rank higher, convert better, and grow faster.",
+    subheadline: "AssuredPixel specializes in SEO ranking and website restructuring that helps USA businesses rank higher, convert better, and grow faster.",
     ctaText: "Book a Free SEO Audit",
     ctaSubtext: "Discover how we can boost your online presence"
   },
@@ -101,7 +101,7 @@ export const mockData = {
       name: "Sarah Mitchell",
       company: "Mitchell's Home Solutions",
       role: "Business Owner",
-      content: "ElevateRank completely transformed our online presence. We went from invisible to dominating local search results. Our leads increased by over 200% in just 6 months!",
+      content: "AssuredPixel completely transformed our online presence. We went from invisible to dominating local search results. Our leads increased by over 200% in just 6 months!",
       rating: 5,
       avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b647?w=100&h=100&fit=crop&crop=face"
     },
@@ -110,7 +110,7 @@ export const mockData = {
       name: "David Chen",
       company: "Chen Consulting Group",
       role: "Managing Director",
-      content: "The team at ElevateRank doesn't just talk about results - they deliver them. Our website now ranks on the first page for our most important keywords, and our conversion rate has doubled.",
+      content: "The team at AssuredPixel doesn't just talk about results - they deliver them. Our website now ranks on the first page for our most important keywords, and our conversion rate has doubled.",
       rating: 5,
       avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face"
     },
@@ -119,7 +119,7 @@ export const mockData = {
       name: "Jennifer Rodriguez",
       company: "Rodriguez Legal Services",
       role: "Attorney & Founder",
-      content: "Professional, results-driven, and transparent. ElevateRank helped us restructure our entire digital strategy. We're now getting qualified leads every single day through organic search.",
+      content: "Professional, results-driven, and transparent. AssuredPixel helped us restructure our entire digital strategy. We're now getting qualified leads every single day through organic search.",
       rating: 5,
       avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&h=100&fit=crop&crop=face"
     }

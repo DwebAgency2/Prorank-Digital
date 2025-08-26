@@ -1,60 +1,107 @@
-import React, { useState } from 'react';
-import { Button } from './ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
-import { Mail, Phone, MapPin, Clock, CheckCircle, ArrowRight } from 'lucide-react';
-import { mockData } from '../data/mock';
-import { toast } from 'sonner';
+import React, { useState } from "react";
+import { Button } from "./ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "./ui/card";
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Clock,
+  CheckCircle,
+  ArrowRight,
+} from "lucide-react";
+import { mockData } from "../data/mock";
+import { toast } from "sonner";
 
 export const ContactSection = () => {
   const { contactInfo } = mockData;
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    company: '',
-    phone: '',  
-    website: '',
-    message: '',
-    service: 'seo-audit'
+    name: "",
+    email: "",
+    company: "",
+    phone: "",
+    website: "",
+    message: "",
+    service: "seo-audit",
   });
 
   const services = [
-    { value: 'seo-audit', label: 'SEO Audit & Strategy' },
-    { value: 'on-page-seo', label: 'On-Page SEO Optimization' },
-    { value: 'off-page-seo', label: 'Off-Page SEO & Link Building' },
-    { value: 'website-restructure', label: 'Website Restructuring' },
-    { value: 'ongoing-management', label: 'Ongoing SEO Management' },
-    { value: 'consultation', label: 'General Consultation' }
+    { value: "seo-audit", label: "SEO Audit & Strategy" },
+    { value: "on-page-seo", label: "On-Page SEO Optimization" },
+    { value: "off-page-seo", label: "Off-Page SEO & Link Building" },
+    { value: "website-restructure", label: "Website Restructuring" },
+    { value: "ongoing-management", label: "Ongoing SEO Management" },
+    { value: "consultation", label: "General Consultation" },
   ];
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    // Mock form submission - in real app this would send to backend
-    console.log('Form submitted:', formData);
-    
-    // Show success message
-    toast.success("Thank you! We'll contact you within 24 hours to schedule your free SEO audit.", {
-      duration: 5000,
-    });
-    
-    // Reset form
-    setFormData({
-      name: '',
-      email: '',
-      company: '',
-      phone: '',
-      website: '',
-      message: '',
-      service: 'seo-audit'
-    });
+
+    const hubspotData = {
+      fields: [
+        { name: "name", value: formData.name },
+        { name: "email", value: formData.email },
+        { name: "company", value: formData.company },
+        { name: "phone", value: formData.phone },
+        { name: "website", value: formData.website },
+        { name: "service", value: formData.service },
+        { name: "message", value: formData.message },
+      ],
+      context: {
+        pageUri: window.location.href,
+        pageName: document.title,
+      },
+    };
+
+    try {
+      const response = await fetch(
+        "https://api.hsforms.com/submissions/v3/integration/submit/146793615/9ff157d6-e910-42b2-831f-565ebc6fd6b1",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(hubspotData),
+        }
+      );
+
+      if (response.ok) {
+        toast.success(
+          "Thank you! We'll contact you within 24 hours to schedule your free SEO audit.",
+          {
+            duration: 5000,
+          }
+        );
+
+        setFormData({
+          name: "",
+          email: "",
+          company: "",
+          phone: "",
+          website: "",
+          message: "",
+          service: "seo-audit",
+        });
+      } else {
+        toast.error("Oops! Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      console.error("HubSpot submit error:", error);
+      toast.error("Oops! Something went wrong. Please try again.");
+    }
   };
 
   return (
@@ -69,7 +116,8 @@ export const ContactSection = () => {
             Ready to Transform Your Business?
           </h2>
           <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-            Book your free SEO audit and discover how we can help your business rank higher, attract more customers, and grow faster online.
+            Book your free SEO audit and discover how we can help your business
+            rank higher, attract more customers, and grow faster online.
           </p>
         </div>
 
@@ -82,14 +130,18 @@ export const ContactSection = () => {
                   Book Your Free SEO Audit
                 </CardTitle>
                 <CardDescription className="text-slate-600">
-                  Fill out the form below and we'll analyze your website's SEO performance and provide actionable recommendations at no cost.
+                  Fill out the form below and we'll analyze your website's SEO
+                  performance and provide actionable recommendations at no cost.
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
-                      <label htmlFor="name" className="block text-sm font-medium text-slate-700 mb-2">
+                      <label
+                        htmlFor="name"
+                        className="block text-sm font-medium text-slate-700 mb-2"
+                      >
                         Full Name *
                       </label>
                       <input
@@ -104,7 +156,10 @@ export const ContactSection = () => {
                       />
                     </div>
                     <div>
-                      <label htmlFor="email" className="block text-sm font-medium text-slate-700 mb-2">
+                      <label
+                        htmlFor="email"
+                        className="block text-sm font-medium text-slate-700 mb-2"
+                      >
                         Email Address *
                       </label>
                       <input
@@ -122,7 +177,10 @@ export const ContactSection = () => {
 
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
-                      <label htmlFor="company" className="block text-sm font-medium text-slate-700 mb-2">
+                      <label
+                        htmlFor="company"
+                        className="block text-sm font-medium text-slate-700 mb-2"
+                      >
                         Company Name *
                       </label>
                       <input
@@ -137,7 +195,10 @@ export const ContactSection = () => {
                       />
                     </div>
                     <div>
-                      <label htmlFor="phone" className="block text-sm font-medium text-slate-700 mb-2">
+                      <label
+                        htmlFor="phone"
+                        className="block text-sm font-medium text-slate-700 mb-2"
+                      >
                         Phone Number
                       </label>
                       <input
@@ -153,7 +214,10 @@ export const ContactSection = () => {
                   </div>
 
                   <div>
-                    <label htmlFor="website" className="block text-sm font-medium text-slate-700 mb-2">
+                    <label
+                      htmlFor="website"
+                      className="block text-sm font-medium text-slate-700 mb-2"
+                    >
                       Website URL *
                     </label>
                     <input
@@ -169,7 +233,10 @@ export const ContactSection = () => {
                   </div>
 
                   <div>
-                    <label htmlFor="service" className="block text-sm font-medium text-slate-700 mb-2">
+                    <label
+                      htmlFor="service"
+                      className="block text-sm font-medium text-slate-700 mb-2"
+                    >
                       Primary Interest *
                     </label>
                     <select
@@ -180,7 +247,7 @@ export const ContactSection = () => {
                       onChange={handleInputChange}
                       className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all duration-200"
                     >
-                      {services.map(service => (
+                      {services.map((service) => (
                         <option key={service.value} value={service.value}>
                           {service.label}
                         </option>
@@ -189,7 +256,10 @@ export const ContactSection = () => {
                   </div>
 
                   <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-slate-700 mb-2">
+                    <label
+                      htmlFor="message"
+                      className="block text-sm font-medium text-slate-700 mb-2"
+                    >
                       Tell us about your goals (Optional)
                     </label>
                     <textarea
@@ -203,7 +273,7 @@ export const ContactSection = () => {
                     />
                   </div>
 
-                  <Button 
+                  <Button
                     type="submit"
                     size="lg"
                     className="w-full bg-teal-600 hover:bg-teal-700 text-white py-4 text-lg font-semibold rounded-xl transition-all duration-300 hover:shadow-xl hover:scale-105 group"
@@ -213,7 +283,9 @@ export const ContactSection = () => {
                   </Button>
 
                   <p className="text-xs text-slate-500 text-center">
-                    By submitting this form, you agree to receive communications from ElevateRank Digital. We respect your privacy and will never share your information.
+                    By submitting this form, you agree to receive communications
+                    from ElevateRank Digital. We respect your privacy and will
+                    never share your information.
                   </p>
                 </form>
               </CardContent>
@@ -229,7 +301,8 @@ export const ContactSection = () => {
                   Get In Touch
                 </CardTitle>
                 <CardDescription className="text-slate-600">
-                  Prefer to talk directly? Reach out using any of the methods below.
+                  Prefer to talk directly? Reach out using any of the methods
+                  below.
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
@@ -237,28 +310,38 @@ export const ContactSection = () => {
                   <Mail className="w-5 h-5 text-teal-600" />
                   <div>
                     <div className="font-medium text-slate-900">Email</div>
-                    <div className="text-sm text-slate-600">{contactInfo.email}</div>
+                    <div className="text-sm text-slate-600">
+                      {contactInfo.email}
+                    </div>
                   </div>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Phone className="w-5 h-5 text-teal-600" />
                   <div>
                     <div className="font-medium text-slate-900">Phone</div>
-                    <div className="text-sm text-slate-600">{contactInfo.phone}</div>
+                    <div className="text-sm text-slate-600">
+                      {contactInfo.phone}
+                    </div>
                   </div>
                 </div>
                 <div className="flex items-center space-x-3">
                   <MapPin className="w-5 h-5 text-teal-600" />
                   <div>
                     <div className="font-medium text-slate-900">Address</div>
-                    <div className="text-sm text-slate-600">{contactInfo.address}</div>
+                    <div className="text-sm text-slate-600">
+                      {contactInfo.address}
+                    </div>
                   </div>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Clock className="w-5 h-5 text-teal-600" />
                   <div>
-                    <div className="font-medium text-slate-900">Business Hours</div>
-                    <div className="text-sm text-slate-600">{contactInfo.hours}</div>
+                    <div className="font-medium text-slate-900">
+                      Business Hours
+                    </div>
+                    <div className="text-sm text-slate-600">
+                      {contactInfo.hours}
+                    </div>
                   </div>
                 </div>
               </CardContent>
@@ -273,24 +356,42 @@ export const ContactSection = () => {
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="flex items-start space-x-3">
-                  <div className="w-6 h-6 bg-teal-600 text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">1</div>
+                  <div className="w-6 h-6 bg-teal-600 text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">
+                    1
+                  </div>
                   <div>
-                    <div className="font-medium text-slate-900">Quick Response</div>
-                    <div className="text-sm text-slate-600">We'll contact you within 24 hours to schedule your audit</div>
+                    <div className="font-medium text-slate-900">
+                      Quick Response
+                    </div>
+                    <div className="text-sm text-slate-600">
+                      We'll contact you within 24 hours to schedule your audit
+                    </div>
                   </div>
                 </div>
                 <div className="flex items-start space-x-3">
-                  <div className="w-6 h-6 bg-teal-600 text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">2</div>
+                  <div className="w-6 h-6 bg-teal-600 text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">
+                    2
+                  </div>
                   <div>
-                    <div className="font-medium text-slate-900">Free SEO Audit</div>
-                    <div className="text-sm text-slate-600">Comprehensive analysis of your website's SEO performance</div>
+                    <div className="font-medium text-slate-900">
+                      Free SEO Audit
+                    </div>
+                    <div className="text-sm text-slate-600">
+                      Comprehensive analysis of your website's SEO performance
+                    </div>
                   </div>
                 </div>
                 <div className="flex items-start space-x-3">
-                  <div className="w-6 h-6 bg-teal-600 text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">3</div>
+                  <div className="w-6 h-6 bg-teal-600 text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">
+                    3
+                  </div>
                   <div>
-                    <div className="font-medium text-slate-900">Strategy Session</div>
-                    <div className="text-sm text-slate-600">Custom roadmap to improve your rankings and traffic</div>
+                    <div className="font-medium text-slate-900">
+                      Strategy Session
+                    </div>
+                    <div className="text-sm text-slate-600">
+                      Custom roadmap to improve your rankings and traffic
+                    </div>
                   </div>
                 </div>
               </CardContent>
