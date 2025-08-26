@@ -37,7 +37,7 @@ export const Header = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:block">
+          <nav className="hidden lg:block">
             <div className="ml-10 flex items-baseline space-x-8">
               {navigation.map((item) => (
                 <button
@@ -52,7 +52,7 @@ export const Header = () => {
           </nav>
 
           {/* CTA Button - Desktop */}
-          <div className="hidden md:block">
+          <div className="hidden lg:block">
             <Button 
               onClick={() => scrollToSection('#contact')}
               className="bg-teal-600 hover:bg-teal-700 text-white px-6 py-2 rounded-lg transition-all duration-300 hover:shadow-lg hover:scale-105"
