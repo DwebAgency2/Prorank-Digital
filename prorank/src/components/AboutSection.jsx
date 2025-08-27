@@ -1,6 +1,6 @@
-import React from 'react';
-import { CheckCircle, Target, Users, Award } from 'lucide-react';
-import { mockData } from '../data/mock';
+import React from "react";
+import { CheckCircle, Target, Users, Award } from "lucide-react";
+import { mockData } from "../data/mock";
 
 export const AboutSection = () => {
   const { companyInfo } = mockData;
@@ -9,25 +9,28 @@ export const AboutSection = () => {
     {
       icon: Target,
       title: "Results-Driven",
-      description: "We focus on measurable outcomes that directly impact your business growth and revenue."
+      description:
+        "We focus on measurable outcomes that directly impact your business growth and revenue.",
     },
     {
       icon: Users,
       title: "Client-Centric",
-      description: "Your success is our success. We build long-term partnerships based on trust and transparency."
+      description:
+        "Your success is our success. We build long-term partnerships based on trust and transparency.",
     },
     {
       icon: Award,
       title: "Proven Expertise",
-      description: "Years of experience helping USA businesses dominate their local and national markets."
-    }
+      description:
+        "Years of experience helping USA businesses dominate their local and national markets.",
+    },
   ];
 
   const achievements = [
     "150+ successful SEO campaigns",
     "180% average traffic growth",
     "98% client retention rate",
-    "4+ years of proven results"
+    "4+ years of proven results",
   ];
 
   return (
@@ -38,7 +41,7 @@ export const AboutSection = () => {
           <div className="space-y-8">
             <div>
               <div className="inline-flex items-center px-4 py-2 bg-teal-100 text-teal-800 rounded-full text-sm font-medium mb-4">
-                About ElevateRank Digital
+                About Assuredpixel
               </div>
               <h2 className="text-4xl sm:text-5xl font-bold text-slate-900 mb-6">
                 Your Partner in Digital Success
@@ -47,20 +50,27 @@ export const AboutSection = () => {
                 {companyInfo.description}
               </p>
               <p className="text-lg text-slate-600 leading-relaxed">
-                Founded in {companyInfo.founded}, we've helped over {companyInfo.clientsServed} businesses 
-                transform their online presence through strategic SEO optimization and comprehensive website restructuring. 
-                Our data-driven approach consistently delivers an average of {companyInfo.averageGrowth} growth in organic traffic and lead generation.
+                Founded in {companyInfo.founded}, we've helped over{" "}
+                {companyInfo.clientsServed} businesses transform their online
+                presence through strategic SEO optimization and comprehensive
+                website restructuring. Our data-driven approach consistently
+                delivers an average of {companyInfo.averageGrowth} growth in
+                organic traffic and lead generation.
               </p>
             </div>
 
             {/* Achievements */}
             <div className="space-y-4">
-              <h3 className="text-2xl font-bold text-slate-900">Why Choose Us?</h3>
+              <h3 className="text-2xl font-bold text-slate-900">
+                Why Choose Us?
+              </h3>
               <div className="grid grid-cols-1 gap-3">
                 {achievements.map((achievement, index) => (
                   <div key={index} className="flex items-center space-x-3">
                     <CheckCircle className="w-5 h-5 text-teal-600 flex-shrink-0" />
-                    <span className="text-slate-700 font-medium">{achievement}</span>
+                    <span className="text-slate-700 font-medium">
+                      {achievement}
+                    </span>
                   </div>
                 ))}
               </div>
@@ -69,7 +79,11 @@ export const AboutSection = () => {
             {/* CTA */}
             <div className="pt-4">
               <button
-                onClick={() => document.querySelector('#contact').scrollIntoView({ behavior: 'smooth' })}
+                onClick={() =>
+                  document
+                    .querySelector("#contact")
+                    .scrollIntoView({ behavior: "smooth" })
+                }
                 className="bg-teal-600 hover:bg-teal-700 text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 hover:shadow-lg hover:scale-105"
               >
                 Partner With Us Today
@@ -82,11 +96,11 @@ export const AboutSection = () => {
             <h3 className="text-2xl font-bold text-slate-900 text-center lg:text-left">
               Our Core Values
             </h3>
-            
+
             {values.map((value, index) => {
               const IconComponent = value.icon;
               return (
-                <div 
+                <div
                   key={index}
                   className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border border-slate-200 hover:border-teal-200 group"
                 >
@@ -109,13 +123,24 @@ export const AboutSection = () => {
 
             {/* Team Image Placeholder */}
             <div className="relative bg-white rounded-2xl p-8 shadow-lg border border-slate-200 text-center">
+
               <div className="w-full h-32 bg-gradient-to-r from-teal-100 via-emerald-100 to-teal-100 rounded-xl flex items-center justify-center mb-4">
-                <div className="text-teal-600 font-semibold text-lg">
-                  ElevateRank Digital Team
+                {/* Small round images in one card */}
+                <div className="flex flex-wrap justify-center gap-6 mb-4">
+                  {mockData.teamMembers.map((member, index) => (
+                    <img
+                      key={index}
+                      src={member.image}
+                      alt={member.name}
+                      className="w-24 h-24 rounded-full object-cover border-2 border-teal-200"
+                    />
+                  ))}
                 </div>
               </div>
+
               <p className="text-slate-600 text-sm">
-                Meet our dedicated team of SEO experts and digital strategists committed to your success.
+                Meet our dedicated team of SEO experts and digital strategists
+                committed to your success.
               </p>
             </div>
           </div>
